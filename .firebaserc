@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "smarthostelnetworkmanager"
+  },
+  "targets": {
+    "surya-4f39a": {
+      "hosting": {
+        "hostel": [
+          "smarthostelnetworkmanager"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

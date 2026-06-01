@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Hostel Network Manager</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">HostelNet</div>
+    <nav>
+      <button class="nav-btn active" onclick="showTab('dashboard', this)">Dashboard</button>
+      <button class="nav-btn" onclick="showTab('register', this)">Register Device</button>
+      <button class="nav-btn" onclick="showTab('devices', this)">All Devices</button>
+      <button class="nav-btn" onclick="showTab('blocked', this)">Blocked</button>
+      <button class="nav-btn" onclick="showTab('reports', this)">Usage Reports</button>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <section id="tab-dashboard" class="tab active">
+      <h1>Network Overview</h1>
+      <div class="stats-grid">
+        <div class="stat-card"><span id="stat-total">-</span><label>Total Devices</label></div>
+        <div class="stat-card green"><span id="stat-approved">-</span><label>Active</label></div>
+        <div class="stat-card red"><span id="stat-blocked">-</span><label>Blocked</label></div>
+        <div class="stat-card yellow"><span id="stat-pending">-</span><label>Pending</label></div>
+        <div class="stat-card blue"><span id="stat-data">-</span><label>Total Data Used</label></div>
+      </div>
+    </section>
+
+    <section id="tab-register" class="tab">
+      <h1>Register New Device</h1>
+      <div class="form-card">
+        <input id="reg-mac" placeholder="MAC Address (e.g. AA:BB:CC:DD:EE:FF)" />
+        <input id="reg-name" placeholder="Device Name (e.g. Laptop)" />
+        <input id="reg-owner" placeholder="Student Name" />
+        <input id="reg-room" placeholder="Room Number" />
+        <button class="btn-primary" onclick="registerDevice()">Register Device</button>
+        <p id="reg-msg"></p>
+      </div>
+    </section>
+
+    <section id="tab-devices" class="tab">
+      <h1>All Devices</h1>
+      <p id="devices-msg" class="page-msg"></p>
+      <div id="devices-list" class="table-wrap"></div>
+    </section>
+
+    <section id="tab-blocked" class="tab">
+      <h1>Blocked Devices</h1>
+      <div class="form-card">
+        <input id="block-mac" placeholder="MAC Address to block" />
+        <input id="block-reason" placeholder="Reason for blocking" />
+        <button class="btn-danger" onclick="blockDevice()">Block Device</button>
+      </div>
+      <div id="blocked-list" class="table-wrap"></div>
+    </section>
+
+    <section id="tab-reports" class="tab">
+      <h1>Usage Reports</h1>
+      <div id="report-list" class="table-wrap"></div>
+    </section>
+  </main>
+
+  <script src="app.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "smarthostelnetworkmanager",
+    "public": "frontend",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
