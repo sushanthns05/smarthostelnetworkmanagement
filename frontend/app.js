@@ -1,7 +1,8 @@
+const RENDER_API = 'https://smarthostelnetworkmanagement.onrender.com/api';
+const isBackendOrigin = window.location.hostname === 'localhost' && window.location.port === '3001';
+
 const API = window.API_BASE_URL || (
-  window.location.port === '3001'
-    ? `${window.location.origin}/api`
-    : 'http://localhost:3001/api'
+  isBackendOrigin ? `${window.location.origin}/api` : RENDER_API
 );
 
 function showTab(name, button) {
@@ -42,7 +43,7 @@ async function request(path, options) {
   try {
     response = await fetch(url, options);
   } catch (error) {
-    throw new Error('Cannot connect to backend. Start the server on port 3001.');
+    throw new Error(`Cannot connect to backend at ${API}. Check that the Render service is deployed.`);
   }
 
   const data = await response.json().catch(() => ({}));

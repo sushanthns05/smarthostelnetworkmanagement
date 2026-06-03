@@ -11,6 +11,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'frontend')));
 
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', service: 'smart-hostel-network-api' });
+});
+
 app.get('/api/devices', (req, res) => {
   const devices = db.prepare('SELECT * FROM devices ORDER BY registered_at DESC').all();
   res.json(devices);
@@ -163,7 +167,11 @@ app.get('/api/stats', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
+  res.json({
+    status: 'ok',
+    service: 'smart-hostel-network-api',
+    endpoints: ['/api/health', '/api/stats', '/api/devices']
+  });
 });
 
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
