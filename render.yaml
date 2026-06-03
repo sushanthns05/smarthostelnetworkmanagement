@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: smart-hostel-network-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SQLITE_DB_PATH
+        value: /var/data/hostel_network.db
+    disks:
+      - name: hostel-network-data
+        mountPath: /var/data
+        sizeGB: 1

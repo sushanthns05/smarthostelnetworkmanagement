@@ -1,6 +1,8 @@
-const API = window.location.port === '3001'
-  ? `${window.location.origin}/api`
-  : 'http://localhost:3001/api';
+const API = window.API_BASE_URL || (
+  window.location.port === '3001'
+    ? `${window.location.origin}/api`
+    : 'http://localhost:3001/api'
+);
 
 function showTab(name, button) {
   document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
